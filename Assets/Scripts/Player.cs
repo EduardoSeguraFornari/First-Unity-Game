@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public float force;
     public bool running;
     public float velocidade;
+    private float tempoNoAr = 0;
+    private int pulou = 0;
 
     // Use this for initialization
     void Start()
@@ -30,6 +32,16 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         IsOnGround();
+        if (estaNoChao)
+        {
+            tempoNoAr = 0;
+            pulou = 0;
+            force = 1000;
+        }
+        if (pulou > 0)
+        {
+            tempoNoAr += Time.deltaTime;
+        }
         if (running)
         {
             Movimentar();
@@ -37,7 +49,6 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetButtonDown("Jump") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
         {
-            StartCoroutine(GreenYellowRed());
             start = true;
             tempoStart = Time.deltaTime;
         }
@@ -50,16 +61,6 @@ public class Player : MonoBehaviour
             }
             tempoStart += Time.deltaTime;
         }
-    }
-
-    IEnumerator GreenYellowRed()
-    {
-        Debug.Log("Green");
-        yield return new WaitForSeconds(3.0f);
-        Debug.Log("Yellow");
-        yield return new WaitForSeconds(1.0f);
-        Debug.Log("Red");
-        yield return new WaitForSeconds(3.0f);
     }
 
     private void Movimentar()
@@ -88,10 +89,11 @@ public class Player : MonoBehaviour
     private void Pular()
     {
         //if (estaNoChao && rb2D.velocity.y <= 0)
-        if (estaNoChao)
+        if (estaNoChao || (tempoNoAr >= 0.12f && pulou == 1))
         {
             rb2D.AddForce(transform.up * force, ForceMode2D.Force);
-            //rb2D.AddForce(transform.up * force * Time.deltaTime);
+            force = 600;
+            pulou++;
         }
     }
 
@@ -100,6 +102,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
         {
             Pular();
+
         }
     }
 }
