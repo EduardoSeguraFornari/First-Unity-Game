@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
     private void Pular()
     {
         //if (estaNoChao && rb2D.velocity.y <= 0)
-        if (estaNoChao || (tempoNoAr >= 0.12f && pulou == 1))
+        if (estaNoChao || (tempoNoAr >= 0.18f && pulou == 1))
         {
             rb2D.AddForce(transform.up * force, ForceMode2D.Force);
             force = 600;
