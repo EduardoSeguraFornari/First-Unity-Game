@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         IsOnGround();
         if (running)
@@ -90,7 +90,8 @@ public class Player : MonoBehaviour
         //if (estaNoChao && rb2D.velocity.y <= 0)
         if (estaNoChao)
         {
-            rb2D.AddForce(transform.up * force);
+            rb2D.AddForce(transform.up * force, ForceMode2D.Force);
+            //rb2D.AddForce(transform.up * force * Time.deltaTime);
         }
     }
 

@@ -13,6 +13,10 @@ public class Score : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if (PlayerPrefs.HasKey("Score"))
+        {
+            topScore = PlayerPrefs.GetInt("Score");
+        }
         topScoreText.text = "Top " + topScore;
         int y = Screen.height;
         int x = Screen.width;
@@ -20,7 +24,7 @@ public class Score : MonoBehaviour
         scoreAtualText.fontSize = fontSize;
         topScoreText.fontSize = fontSize;
         scoreAtualText.GetComponent<RectTransform>().position = new Vector3(100, y - 30);
-        topScoreText.GetComponent<RectTransform>().position = new Vector3(100, y - x/12);
+        topScoreText.GetComponent<RectTransform>().position = new Vector3(100, y - x / 16);
     }
 
     // Update is called once per frame
@@ -31,6 +35,12 @@ public class Score : MonoBehaviour
         {
             topScoreText.text = "Top " + topScore;
             topScore = score;
+            SaveScore();
         }
+    }
+
+    public void SaveScore()
+    {
+        PlayerPrefs.SetInt("Score", score);
     }
 }
