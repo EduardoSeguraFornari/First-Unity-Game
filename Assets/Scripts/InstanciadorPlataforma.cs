@@ -22,11 +22,9 @@ public class InstanciadorPlataforma : MonoBehaviour
     void Start()
     {
         Vector2 posicao = posicaoInicial;
-
+        var rnd = new System.Random();
         for (int i = 1; i <= quantidade; i++)
         {
-            var rnd = new System.Random();
-            
             if (nemeros.Contains(rnd.Next(1, 35)))
             {
                 posicao.x += 2;

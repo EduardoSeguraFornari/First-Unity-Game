@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         }
         if (pulou > 0)
         {
-            tempoNoAr += Time.deltaTime;
+            tempoNoAr += Time.fixedDeltaTime;
         }
         if (running)
         {
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         else if (Input.GetButtonDown("Jump") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
         {
             start = true;
-            tempoStart = Time.deltaTime;
+            tempoStart = Time.fixedDeltaTime;
         }
         else if (start)
         {
@@ -59,14 +59,14 @@ public class Player : MonoBehaviour
                 animator.SetTrigger("Run");
                 running = true;
             }
-            tempoStart += Time.deltaTime;
+            tempoStart += Time.fixedDeltaTime;
         }
     }
 
     private void Movimentar()
     {
-        //rb2D.transform.Translate(Vector2.right * velocidade * Time.deltaTime);
-        transform.Translate(Vector2.right * velocidade * Time.deltaTime);
+        //rb2D.transform.Translate(Vector2.right * velocidade * Time.fixedDeltaTime);
+        transform.Translate(Vector2.right * velocidade * Time.fixedDeltaTime);
     }
 
     private void IsOnGround()
