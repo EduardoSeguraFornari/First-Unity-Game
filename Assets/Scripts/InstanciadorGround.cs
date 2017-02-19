@@ -6,7 +6,6 @@ public class InstanciadorGround : MonoBehaviour
 {
 
     private Vector2 velocidade;
-    private float smooth = 0f;
 
     public Vector2 posicaoInicial;
     public GameObject inicio;

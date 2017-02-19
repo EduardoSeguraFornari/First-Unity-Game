@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class Plataforma : MonoBehaviour {
+
 	private bool pisou;
 	private float tempoVida;
 	public float tempoMaximoVida = 0.4f;
     public AudioClip clip;
+
 	// Use this for initialization
 	void Start () {
 		tempoVida = 0;

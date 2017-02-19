@@ -6,7 +6,6 @@ public class InstanciadorFruta : MonoBehaviour
 {
 
     private Vector2 velocidade;
-    private float smooth = 0f;
     private int quantidadeFrutas = 0;
 
     public Vector2 posicaoInicial;

@@ -6,9 +6,11 @@ public class InstanciadorPlataforma : MonoBehaviour
 {
 
     private Vector2 velocidade;
-    private float smooth = 0f;
     private int quantidadeFrutas = 0;
-    private List<int> nemeros = new List<int>{ 1, 2, 3, 5, 8, 13, 21 };
+    private List<int> numeros = new List<int> { 1, 2, 3, 5, 8, 13, 21 };
+    private List<int> numerosUsados = new List<int>();
+    private int count = 0;
+    private int numero;
 
     public Vector2 posicaoInicial;
     public GameObject plataforma;
@@ -25,10 +27,31 @@ public class InstanciadorPlataforma : MonoBehaviour
         var rnd = new System.Random();
         for (int i = 1; i <= quantidade; i++)
         {
-            if (nemeros.Contains(rnd.Next(1, 35)))
+            if (count == 0)
+            {
+                numero = 0;
+                if (numerosUsados.Count == numeros.Count)
+                {
+                    numerosUsados.Clear();
+                }
+                while (!numeros.Contains(numero) || numerosUsados.Contains(numero))
+                {
+                    numero = rnd.Next(1, 35);
+                }
+                numerosUsados.Add(numero);
+            }
+
+            if (count == numero)
             {
                 posicao.x += 2;
+                count = 0;
             }
+            else
+            {
+                count++;
+            }
+
+
             Instantiate(plataforma, posicao, plataforma.transform.rotation);
             if (i % 5 == 0)
             {
