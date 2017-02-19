@@ -5,27 +5,16 @@ using UnityEngine.UI;
 
 public class Fruta : MonoBehaviour
 {
-    public static int quantidadeFrutas = 0;
+    [SerializeField]
+    private int valor;
+
     void Update()
     {
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (quantidadeFrutas == 16)
-        {
-            Score.score += 10;
-            quantidadeFrutas = 0;
-        }
-        else if (quantidadeFrutas == 5)
-        {
-            Score.score += 5;
-        }
-        else
-        {
-            Score.score++;
-        }
-        quantidadeFrutas++;
+        Score.score += valor;
         Destroy(this.gameObject);
     }
 

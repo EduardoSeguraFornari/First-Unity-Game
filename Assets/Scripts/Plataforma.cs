@@ -32,7 +32,6 @@ public class Plataforma : MonoBehaviour {
 
     public void SomPlataformaQuabranco()
     {
-        AudioSource audio = GetComponent<AudioSource>();
         AudioSource.PlayClipAtPoint(clip, transform.position);
     }
 }

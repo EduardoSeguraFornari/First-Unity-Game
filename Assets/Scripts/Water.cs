@@ -22,7 +22,6 @@ public class Water : MonoBehaviour {
         {
             Destroy(player);
             Score.score = 0;
-            Fruta.quantidadeFrutas = 0;
             SceneManager.LoadScene("Play");
         }
     }
