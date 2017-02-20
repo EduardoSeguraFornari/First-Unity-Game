@@ -23,8 +23,8 @@ public class Score : MonoBehaviour
         int fontSize = x / 20;
         scoreAtualText.fontSize = fontSize;
         topScoreText.fontSize = fontSize;
-        scoreAtualText.GetComponent<RectTransform>().position = new Vector3(100, y - 30);
-        topScoreText.GetComponent<RectTransform>().position = new Vector3(100, y - x / 16);
+        scoreAtualText.GetComponent<RectTransform>().position = new Vector3(100, y - ((y / 10) * 2));
+        topScoreText.GetComponent<RectTransform>().position = new Vector3(100, y - ((y / 10) * 3));
     }
 
     // Update is called once per frame

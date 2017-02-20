@@ -22,6 +22,8 @@ public class Water : MonoBehaviour {
         {
             Destroy(player);
             Score.score = 0;
+            Money.SaveMoney();
+            Money.money = 0;
             SceneManager.LoadScene("Play");
         }
     }

@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Play : MonoBehaviour {
 
     public GameObject buttonHome;
     public GameObject textScore;
     public GameObject textTopScore;
+    public GameObject textMoney;
     public static bool play;
     private float screenWidth;
 
@@ -25,6 +27,7 @@ public class Play : MonoBehaviour {
             buttonHome.SetActive(false);
             textScore.SetActive(true);
             textTopScore.SetActive(true);
+            textMoney.SetActive(true);
             play = true;
         }
         

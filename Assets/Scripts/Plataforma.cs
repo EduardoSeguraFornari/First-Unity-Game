@@ -24,7 +24,8 @@ public class Plataforma : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D colisor){
-		if (colisor.gameObject.tag == "Player") {
+        Score.score ++;
+        if (colisor.gameObject.tag == "Player") {
             SomPlataformaQuabranco();
             pisou = true;
 		}

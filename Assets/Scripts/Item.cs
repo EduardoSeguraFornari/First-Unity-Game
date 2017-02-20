@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Score.score += valor;
+        Money.money += valor;
         Destroy(this.gameObject);
     }
 
