@@ -5,8 +5,6 @@ using UnityEngine;
 public class Instanciador : MonoBehaviour
 {
 
-    private Vector2 velocidade;
-
     public Vector2 posicaoInicial;
     public GameObject gameObject;
     public float distancia;

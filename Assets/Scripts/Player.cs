@@ -9,17 +9,15 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb2D;
     private Color debugCorColisao = Color.red;
     private float tempoStart;
-    private bool start;
+    private float tempoNoAr = 0;
+    private int pulou = 0;
+    private bool running;
 
     public LayerMask layerMask;
     public Vector2 pontoColisaoPiso = Vector2.zero;
-    public bool estaNoChao;
     public float raio;
     public float force;
-    public bool running;
     public float velocidade;
-    private float tempoNoAr = 0;
-    private int pulou = 0;
 
     // Use this for initialization
     void Start()
@@ -31,32 +29,27 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        IsOnGround();
-        if (estaNoChao)
-        {
-            tempoNoAr = 0;
-            pulou = 0;
-            force = 1000;
-        }
-        if (pulou > 0)
-        {
-            tempoNoAr += Time.fixedDeltaTime;
-        }
+
         if (running)
         {
+            if (IsOnGround())
+            {
+                tempoNoAr = 0;
+                pulou = 0;
+                force = 1000;
+            }
+            if (pulou > 0)
+            {
+                tempoNoAr += Time.fixedDeltaTime;
+            }
             Movimentar();
             ControlarEntradas();
         }
-        else if (Input.GetButtonDown("Jump") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
-        {
-            start = true;
-            tempoStart = Time.fixedDeltaTime;
-        }
-        else if (start)
+        else if (Play.play)
         {
             if (tempoStart >= 0.3f)
             {
-                animator.SetTrigger("Run");
+                animator.SetTrigger(this.name + "Run");
                 running = true;
             }
             tempoStart += Time.fixedDeltaTime;
@@ -69,12 +62,12 @@ public class Player : MonoBehaviour
         transform.Translate(Vector2.right * velocidade * Time.fixedDeltaTime);
     }
 
-    private void IsOnGround()
+    private bool IsOnGround()
     {
         var pontoPosicao = pontoColisaoPiso;
         pontoPosicao.x += transform.position.x;
         pontoPosicao.y += transform.position.y;
-        estaNoChao = Physics2D.OverlapCircle(pontoPosicao, raio, layerMask);
+        return Physics2D.OverlapCircle(pontoPosicao, raio, layerMask);
     }
 
     void OnDrawGizmos()
@@ -89,7 +82,7 @@ public class Player : MonoBehaviour
     private void Pular()
     {
         //if (estaNoChao && rb2D.velocity.y <= 0)
-        if (estaNoChao || (tempoNoAr >= 0.18f && pulou == 1))
+        if (IsOnGround() || (tempoNoAr >= 0.18f && pulou == 1))
         {
             rb2D.AddForce(transform.up * force, ForceMode2D.Force);
             force = 600;
@@ -102,7 +95,6 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
         {
             Pular();
-
         }
     }
 }
