@@ -9,7 +9,6 @@ public class Money : MonoBehaviour
     public Text textMoney;
     public static int money;
     public static int totalMoney;
-    public GameObject gameObjectMoney;
 
     // Use this for initialization
     void Start()
@@ -18,17 +17,21 @@ public class Money : MonoBehaviour
         {
             totalMoney = PlayerPrefs.GetInt("Money");
         }
+        else
+        {
+            PlayerPrefs.SetInt("Money", 0);
+        }
 
         textMoney.text = totalMoney.ToString();
         int y = Screen.height;
         int x = Screen.width;
         int fontSize = x / 20;
-        textMoney.fontSize = fontSize;
-        gameObjectMoney.transform.position = new Vector3((x / 22), y - (y / 8));
-        float scale = (y / 15) * 0.015f;
-        gameObjectMoney.transform.localScale = new Vector3(scale, scale, scale);
+        int diferencaY = y / 20;
 
-        textMoney.GetComponent<RectTransform>().position = new Vector3(100, y - (y / 10));
+        textMoney.fontSize = fontSize;
+        float scale = (y / 15) * 0.015f;
+
+        textMoney.GetComponent<RectTransform>().position = new Vector3(100, y - (y / 10) + diferencaY);
     }
 
     // Update is called once per frame
@@ -40,5 +43,31 @@ public class Money : MonoBehaviour
     public static void SaveMoney()
     {
         PlayerPrefs.SetInt("Money", totalMoney + money);
+    }
+
+    public static int GetMoney()
+    {
+        return PlayerPrefs.GetInt("Money");
+    }
+
+    public static bool ValidaSaque(int money)
+    {
+        int saldo = PlayerPrefs.GetInt("Money");
+        if (saldo < money)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public static bool Sacar(int money)
+    {
+        if (ValidaSaque(money))
+        {
+            int saldo = PlayerPrefs.GetInt("Money");
+            PlayerPrefs.SetInt("Money", saldo - money);
+            return true;
+        }
+        return false;
     }
 }
