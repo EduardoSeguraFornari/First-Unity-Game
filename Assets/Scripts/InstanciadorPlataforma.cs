@@ -14,9 +14,9 @@ public class InstanciadorPlataforma : MonoBehaviour
 
     public Vector2 posicaoInicial;
     public GameObject plataforma;
-    public GameObject fruta_1;
-    public GameObject fruta_2;
-    public GameObject fruta_3;
+    public GameObject item_1;
+    public GameObject item_2;
+    public GameObject item_3;
     public float distancia;
     public int quantidade;
 
@@ -58,14 +58,14 @@ public class InstanciadorPlataforma : MonoBehaviour
                 if (quantidadeFrutas == 16)
                 {
                     posicao.y += 1;
-                    Instantiate(fruta_3, posicao, fruta_3.transform.rotation);
+                    Instantiate(item_3, posicao, item_3.transform.rotation);
                     quantidadeFrutas = 0;
                     posicao.y -= 1;
                 }
                 else if (quantidadeFrutas == 5)
                 {
                     posicao.y += 1;
-                    Instantiate(fruta_2, posicao, fruta_2.transform.rotation);
+                    Instantiate(item_2, posicao, item_2.transform.rotation);
                     quantidadeFrutas++;
                     posicao.y -= 1;
 
@@ -73,7 +73,7 @@ public class InstanciadorPlataforma : MonoBehaviour
                 else
                 {
                     posicao.y += 1;
-                    Instantiate(fruta_1, posicao, fruta_1.transform.rotation);
+                    Instantiate(item_1, posicao, item_1.transform.rotation);
                     quantidadeFrutas++;
                     posicao.y -= 1;
 

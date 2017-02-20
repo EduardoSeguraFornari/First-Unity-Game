@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Fruta : MonoBehaviour
+public class Item : MonoBehaviour
 {
     [SerializeField]
     private int valor;
