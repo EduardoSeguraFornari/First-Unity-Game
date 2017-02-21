@@ -7,6 +7,7 @@ public class CarregarPersonagem : MonoBehaviour {
 
     public List<GameObject> personagens;
     public static GameObject personagem;
+
 	// Use this for initialization
 	void Start () {
         String nomePersonagem;

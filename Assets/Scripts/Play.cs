@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class Play : MonoBehaviour {
 
-    public GameObject buttonHome;
-    public GameObject textScore;
-    public GameObject textTopScore;
-    public GameObject textMoney;
-    public static bool play;
     private float screenWidth;
 
+    public GameObject buttonHome;
+    public GameObject textMoney;
+    public GameObject textScore;
+    public GameObject textTopScore;
+
+    public static bool play;
 
     // Use this for initialization
     void Start () {
@@ -30,6 +31,6 @@ public class Play : MonoBehaviour {
             textMoney.SetActive(true);
             play = true;
         }
-        
     }
+
 }

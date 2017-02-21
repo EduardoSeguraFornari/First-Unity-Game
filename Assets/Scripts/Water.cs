@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class Water : MonoBehaviour
 {
 
-    private float tempoInicial, tempoFinal;
+    private float tempoInicial;
+    private float tempoFinal;
+
     private bool recomecar;
 
     public float tempoDeEspera;
@@ -28,7 +30,6 @@ public class Water : MonoBehaviour
         {
             tempoFinal += Time.time;
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D colisor)

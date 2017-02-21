@@ -6,12 +6,14 @@ public class InstanciadorGround : MonoBehaviour
 {
 
     private Vector2 velocidade;
-
     public Vector2 posicaoInicial;
+
     public GameObject inicio;
     public GameObject meio;
     public GameObject fim;
+
     public float distancia;
+
     public int quantidade;
 
     // Use this for initialization

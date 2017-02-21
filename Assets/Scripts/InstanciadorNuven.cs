@@ -6,11 +6,13 @@ public class InstanciadorNuven : MonoBehaviour
 {
 
     private Vector2 velocidade;
-
     public Vector2 posicaoInicial;
+
     public GameObject nuven;
+
     public float distanciaX;
     public float distanciaY;
+
     public int quantidade;
 
     // Use this for initialization
@@ -32,6 +34,7 @@ public class InstanciadorNuven : MonoBehaviour
             }
             posicao.x += distanciaX;
         }
+
     }
 
     // Update is called once per frame

@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public Text scoreAtualText;
-    public Text topScoreText;
+    public Text TextScore;
+    public Text TextTopScore;
+
     public static int score;
     public static int topScore;
 
@@ -22,7 +23,7 @@ public class Score : MonoBehaviour
             PlayerPrefs.SetInt("Score", 0);
         }
 
-        topScoreText.text = "Top " + topScore;
+        TextTopScore.text = "Top " + topScore;
 
         int y = Screen.height;
         int x = Screen.width;
@@ -30,20 +31,20 @@ public class Score : MonoBehaviour
 
         int fontSize = x / 20;
 
-        scoreAtualText.fontSize = fontSize;
-        scoreAtualText.GetComponent<RectTransform>().position = new Vector3(100, y - ((y / 10) * 2) + diferencaY);
+        TextScore.fontSize = fontSize;
+        TextScore.GetComponent<RectTransform>().position = new Vector3(100, y - ((y / 10) * 2) + diferencaY);
 
-        topScoreText.fontSize = fontSize;
-        topScoreText.GetComponent<RectTransform>().position = new Vector3(100, y - ((y / 10) * 3) + diferencaY);
+        TextTopScore.fontSize = fontSize;
+        TextTopScore.GetComponent<RectTransform>().position = new Vector3(100, y - ((y / 10) * 3) + diferencaY);
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreAtualText.text = score.ToString();
+        TextScore.text = score.ToString();
         if (score >= topScore)
         {
-            topScoreText.text = "Top " + topScore;
+            TextTopScore.text = "Top " + topScore;
             topScore = score;
             SaveScore();
         }
@@ -58,4 +59,5 @@ public class Score : MonoBehaviour
     {
         return PlayerPrefs.GetInt("Score");
     }
+
 }

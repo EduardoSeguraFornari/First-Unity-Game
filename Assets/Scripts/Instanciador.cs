@@ -6,8 +6,11 @@ public class Instanciador : MonoBehaviour
 {
 
     public Vector2 posicaoInicial;
+
     public GameObject gameObject;
+
     public float distancia;
+
     public int quantidade;
 
     // Use this for initialization

@@ -6,15 +6,22 @@ public class Player : MonoBehaviour
 {
 
     private Animator animator;
-    private Rigidbody2D rb2D;
+
+    private Rigidbody2D rigidbody2D;
+
     private Color debugCorColisao = Color.red;
+
     private float tempoStart;
     private float tempoNoAr = 0;
+
     private int pulou = 0;
+
     private bool running;
 
     public LayerMask layerMask;
+
     public Vector2 pontoColisaoPiso = Vector2.zero;
+
     public float raio;
     public float force;
     public float velocidade;
@@ -22,7 +29,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
@@ -38,7 +45,7 @@ public class Player : MonoBehaviour
                 pulou = 0;
                 force = 1000;
             }
-            if (pulou > 0)
+            else if (pulou > 0)
             {
                 tempoNoAr += Time.fixedDeltaTime;
             }
@@ -81,10 +88,9 @@ public class Player : MonoBehaviour
 
     private void Pular()
     {
-        //if (estaNoChao && rb2D.velocity.y <= 0)
         if (IsOnGround() || (tempoNoAr >= 0.18f && pulou == 1))
         {
-            rb2D.AddForce(transform.up * force, ForceMode2D.Force);
+            rigidbody2D.AddForce(transform.up * force, ForceMode2D.Force);
             force = 600;
             pulou++;
         }
@@ -97,4 +103,5 @@ public class Player : MonoBehaviour
             Pular();
         }
     }
+
 }

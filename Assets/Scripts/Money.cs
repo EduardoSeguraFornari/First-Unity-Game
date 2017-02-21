@@ -7,6 +7,7 @@ public class Money : MonoBehaviour
 {
 
     public Text textMoney;
+
     public static int money;
     public static int totalMoney;
 
@@ -24,8 +25,11 @@ public class Money : MonoBehaviour
 
         int y = Screen.height;
         int x = Screen.width;
+
         int fontSize = x / 20;
+
         int diferencaY = y / 20;
+
         float scale = (y / 15) * 0.015f;
 
         money = 0;
@@ -54,10 +58,12 @@ public class Money : MonoBehaviour
     public static bool ValidaSaque(int money)
     {
         int saldo = PlayerPrefs.GetInt("Money");
+
         if (saldo < money)
         {
             return false;
         }
+
         return true;
     }
 
@@ -69,6 +75,8 @@ public class Money : MonoBehaviour
             PlayerPrefs.SetInt("Money", saldo - money);
             return true;
         }
+
         return false;
     }
+
 }
