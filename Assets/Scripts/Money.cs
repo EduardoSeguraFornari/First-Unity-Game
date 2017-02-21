@@ -22,15 +22,16 @@ public class Money : MonoBehaviour
             PlayerPrefs.SetInt("Money", 0);
         }
 
-        textMoney.text = totalMoney.ToString();
         int y = Screen.height;
         int x = Screen.width;
         int fontSize = x / 20;
         int diferencaY = y / 20;
-
-        textMoney.fontSize = fontSize;
         float scale = (y / 15) * 0.015f;
 
+        money = 0;
+
+        textMoney.fontSize = fontSize;
+        textMoney.text = totalMoney.ToString();
         textMoney.GetComponent<RectTransform>().position = new Vector3(100, y - (y / 10) + diferencaY);
     }
 
@@ -42,7 +43,7 @@ public class Money : MonoBehaviour
 
     public static void SaveMoney()
     {
-        PlayerPrefs.SetInt("Money", totalMoney + money);
+        PlayerPrefs.SetInt("Money", money + totalMoney);
     }
 
     public static int GetMoney()

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ButtonsCharacter : MonoBehaviour
+public class Menu : MonoBehaviour
 {
 
     public GameObject player;
