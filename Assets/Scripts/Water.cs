@@ -13,6 +13,8 @@ public class Water : MonoBehaviour
 
     public float tempoDeEspera;
 
+    public AudioClip clip;
+
     // Use this for initialization
     void Start()
     {
@@ -44,8 +46,18 @@ public class Water : MonoBehaviour
 
             tempoInicial = Time.time;
 
+            if (Sound.IsSoundOn())
+            {
+                SomBolhas();
+            }
+
             recomecar = true;
         }
+    }
+
+    public void SomBolhas()
+    {
+        AudioSource.PlayClipAtPoint(clip, transform.position);
     }
 
 }
