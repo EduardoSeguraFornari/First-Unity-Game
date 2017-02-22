@@ -158,6 +158,7 @@ public class Menu : MonoBehaviour
         {
             PlayerPrefs.SetString(nomePersonagem, nomePersonagem);
             buttonComprar.transform.localScale = new Vector3(0f, 0f, 0f);
+            textPrice.enabled = false;
             textMoney.text = "$ " + Money.GetMoney();
         }
     }
