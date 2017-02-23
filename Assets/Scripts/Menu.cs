@@ -11,7 +11,7 @@ public class Menu : MonoBehaviour
     private int posPersonagem = 0;
     private string nomePersonagemAtual;
     private string nomePersonagem;
-    private int precoPersonagem = 10;
+    private int precoPersonagem = 150;
 
     private int money;
 
