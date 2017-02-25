@@ -26,6 +26,7 @@ public class Water : MonoBehaviour
     {
         if (tempoFinal - tempoInicial >= tempoDeEspera && recomecar)
         {
+            Score.score = 0;
             SceneManager.LoadScene("Play");
         }
         else if (recomecar)
@@ -41,8 +42,6 @@ public class Water : MonoBehaviour
             CarregarPersonagem.personagem.SetActive(false);
 
             Money.SaveMoney();
-
-            Score.score = 0;
 
             tempoInicial = Time.time;
 
